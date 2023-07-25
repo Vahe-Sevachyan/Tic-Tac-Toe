@@ -1,0 +1,47 @@
+.rowOne::after,
+.rowTwo::after,
+.rowThree::after {
+  /* display: flex;
+  font-size: 110px;
+  justify-content: space-between;
+  margin: auto;
+  margin-bottom: 10px; */
+  clear: both;
+  content: "";
+  display: table;
+}
+.gameBoard {
+  /* padding: 20px; */
+  /* border: 3px solid black;
+  width: 300px;
+  height: 340px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.board-row {
+  display: flex;
+}
+
+/* .rowOne,
+.rowTwo {
+  border-bottom: 2px solid black;
+} */
+.box {
+  background: #fff;
+  border: 1px solid #221d1d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 110px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 94px;
+}
