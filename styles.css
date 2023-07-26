@@ -22,11 +22,37 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 5px 5px 5px 5px;
 }
 .circle {
-  height: 100px;
-  width: 100px;
+  height: 80px;
+  width: 80px;
   border-radius: 50%;
-  border: 15px solid blue;
+  border: 10px solid blue;
   box-sizing: border-box;
+}
+.x {
+  height: 80px;
+  width: 80px;
+  position: relative;
+  transform: rotate(45deg);
+}
+.x::before,
+.x::after {
+  content: "";
+  position: absolute;
+  background-color: red;
+}
+.x::before {
+  left: 50%;
+  width: 30%;
+  margin-left: -15%;
+  height: 100%;
+}
+
+.x::after {
+  top: 50%;
+  height: 30%;
+  margin-top: -15%;
+  width: 100%;
 }

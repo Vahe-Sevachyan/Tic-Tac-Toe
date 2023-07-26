@@ -3,14 +3,38 @@ const gameBoard = document.querySelector(".game-board");
 const info = document.querySelector(".info");
 
 const boardValues = ["", "", "", "", "", "", "", "", ""];
+
+let startingPlayer = "circle";
+
+info.innerHTML = "It's Circle Turn first";
+
 function createBoard() {
   boardValues.forEach((_boardValue, index) => {
     const boardElement = document.createElement("div");
     boardElement.classList.add("square");
+    boardElement.id = index;
+    boardElement.addEventListener("click", startFirst);
     gameBoard.append(boardElement);
   });
 }
+function addBoardValue(e) {
+  const boardValueDisplay = document.createElement("div");
+  boardValueDisplay.classList.add(startingPlayer);
+  e.target.append(boardValueDisplay);
+}
+
 createBoard();
+
+function startFirst(e) {
+  const startDisplay = document.createElement("div");
+  startDisplay.classList.add(startingPlayer);
+  e.target.append(startingPlayer);
+  startingPlayer = startingPlayer === "circle" ? "x" : "circle";
+  info.innerHTML = `It is now ${startingPlayer}'s turn`;
+  e.target.removeEventListener("click", startFirst);
+}
+
+//
 
 // const displayBoxes = document.querySelectorAll(".box");
 
