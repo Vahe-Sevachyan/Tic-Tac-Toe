@@ -9,7 +9,7 @@ let startingPlayer = "circle";
 info.innerHTML = "It's Circle Turn first";
 
 function createBoard() {
-  boardValues.forEach((_boardValue, index) => {
+  boardValues.forEach((boardValue, index) => {
     const boardElement = document.createElement("div");
     boardElement.classList.add("square");
     boardElement.id = index;
@@ -17,23 +17,47 @@ function createBoard() {
     gameBoard.append(boardElement);
   });
 }
-function addBoardValue(e) {
-  const boardValueDisplay = document.createElement("div");
-  boardValueDisplay.classList.add(startingPlayer);
-  e.target.append(boardValueDisplay);
-}
 
 createBoard();
 
 function startFirst(e) {
   const startDisplay = document.createElement("div");
   startDisplay.classList.add(startingPlayer);
-  e.target.append(startingPlayer);
+  e.target.append(startDisplay);
   startingPlayer = startingPlayer === "circle" ? "x" : "circle";
   info.innerHTML = `It is now ${startingPlayer}'s turn`;
   e.target.removeEventListener("click", startFirst);
+  checkScore();
 }
 
+function checkScore() {
+  const allSquares = document.querySelectorAll(".square");
+  const winningCombos = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
+  winningCombos.forEach((winningCombo) => {
+    const circleWins = winningCombo.forEach((combo) => {
+      allSquares[combo].firstChild?.classList.contains("circle");
+      if (circleWins) {
+        info.innerHTML = `Circle Wins!`;
+        return;
+      }
+    });
+  });
+}
+
+// function addBoardValue(e) {
+//   const boardValueDisplay = document.createElement("div");
+//   boardValueDisplay.classList.add(startingPlayer);
+//   e.target.append(boardValueDisplay);
+// }
 //
 
 // const displayBoxes = document.querySelectorAll(".box");
